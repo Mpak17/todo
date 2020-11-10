@@ -1,0 +1,22 @@
+<div id="project_<%= project.id %>"class="card border-primary m-2 w-50">
+  <div class="card-body">
+          <span class="tag_<%= project.id %>">
+            <b><%= project.name %></b> <br>
+          </span>
+
+    <%= form_for(project, :html => {:style => "display:none", :class => 'edit-form form-inline'}) do |f| %>
+      <%= f.text_field :title, class:'form-control' %>
+      <%= f.text_field :content, class:'form-control' %>
+      <%= f.submit 'Update', class:'btn btn-warning btn-edit'%>
+
+    <% end %>
+
+    <%= link_to project, method: :delete, class:'float-right', remote:true, data: {confirm: "Are you sure"} do %>
+      <i class="fas fa-times-circle text-danger"></i>
+    <% end %>
+
+    <%= link_to edit_project_path(project), class:'float-right edit-button', remote:true do %>
+      <i class="fas fa-edit text-warning"></i>
+    <% end %>
+  </div>
+</div>

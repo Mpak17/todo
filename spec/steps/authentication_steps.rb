@@ -28,6 +28,8 @@ step "User with email :email and password :password logged in" do |email, passwo
 end
 
 step "I fill :field_name field with :value" do |field_name, value|
+  #
+  sleep 1
   first("input[id=#{INPUT_FIELD_MAPPING[field_name]}]").fill_in(with: value)
 end
 

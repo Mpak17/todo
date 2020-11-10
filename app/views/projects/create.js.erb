@@ -1,0 +1,6 @@
+$('#project').append('<%= j render @project %>')
+
+$('#new_project').on('ajax:success', function() {
+    let input = document.getElementById('new_project')
+    input.reset()
+})
