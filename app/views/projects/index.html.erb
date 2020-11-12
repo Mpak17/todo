@@ -1,35 +1,33 @@
-<div class="container ">
-  <h1>Project list</h1>
-  <hr>
+<!--<div>-->
+<!--  <h1>Project list</h1>-->
+<!--  <hr>-->
+<!--</div>-->
+  <div class="container text-center">
+    <p>
+      <% if user_signed_in? %>
+        Logged in as <strong><%= current_user.email %></strong>.
+        <%= link_to "Logout", destroy_user_session_path, method: :delete, class: 'navbar-link'  %>
+      <% else %>
+        <%= link_to "Sign up", new_user_registration_path, class: 'navbar-link'  %> |
+        <%= link_to "Login", new_user_session_path, class: 'navbar-link'  %>
+      <% end %>
+    </p>
 
-  <div id="project">
-    <% @projects.each do |project| %>
-      <div id="project_<%= project.id %>"class="card border-primary m-2 w-50">
-        <div class="card-body">
-          <span class="tag_<%= project.id %>">
-            <b><%= project.name %></b> <br>
-          </span>
+    <div class="wrapper" id="projects">
+      <%= render @projects %>
+    </div>
 
-          <%= form_for(project, :html => {:style => "display:none", remote:true, :class => 'edit-form form-inline'}) do |f| %>
-            <%= f.text_field :name, class:'form-control' %>
-            <%= f.submit 'Update', class:'btn btn-warning btn-edit'%>
+    <br>
 
-          <% end %>
+    <div id='form_id' class="invisible"><p><%= render 'create_form', project: Project.new %></p></div>
 
-          <%= link_to project, method: :delete, class:'float-right', remote:true, data: {confirm: "Are you sure"} do %>
-            <i class="fas fa-times-circle text-danger"></i>
-          <% end %>
+    <br>
+    <button type="button" class="btn btn-primary">Add TODO List</button>
 
-          <%= link_to edit_project_path(project), class:'float-right edit-button', remote:true do %>
-            <i class="fas fa-edit text-warning"></i>
-          <% end %>
-        </div>
-      </div>
-    <% end %>
+    <a class="btn btn-primary">
+      <i class="fas fa-trash"></i></a>
+  <!--  <script type="text/javascript">-->
+  <!--  </script>-->
   </div>
-  <%#= form_for(@project, remote:true, :html => {:class => 'form-inline',}) do |f| %>
-    <%#= f.text_field :project, placeholder: 'Enter a name', class:'form-control', required: true %>
-    <%#= f.submit 'Add', class:'btn btn-primary' %>
-  <%# end %>
-
 </div>
+<%= javascript_pack_tag 'projects' %>

@@ -1,41 +1,56 @@
 class ProjectsController < ApplicationController
+  before_action :find_project, only: [:destroy, :update, :edit, :show]
+
   def index
-    @projects = Project.all
-    @task = Project.new
+    @projects = Project.all # TODO: ADD USER SCOPE
+    # @project = Project.new
   end
 
   def create
     @project = Project.new(project_params)
-    @project.save
 
     respond_to do |format|
-      format.js { @project }
-      format.html {  }
+      if @project.save
+        format.js
+      else
+        format.js { render status: 422}
+      end
     end
   end
 
-  def destroy
-    @project = Project.find(params[:id])
-    @project.destroy
+  def show
   end
 
   def edit
-    @project = Project.all
     respond_to do |format|
-      format.js {@project}
+      format.js
     end
   end
 
   def update
-    @project = Project.find(params[:id])
-    @project.update(project_params)
+    respond_to do |format|
+      if @project.update(project_params)
+        format.js
+      else
+        format.js { render status: 422}
+      end
+    end
+  end
+
+  def destroy
+    @project_id = @project.id
+    @project.destroy
 
     respond_to do |format|
-      format.html { redirect_to root_path }
+      format.js
     end
   end
 
   private
+
+  def find_project
+    @project = Project.find(params[:id])
+  end
 
   def project_params
     params.require(:project).permit(:name)

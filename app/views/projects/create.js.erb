@@ -1,6 +1,11 @@
-$('#project').append('<%= j render @project %>')
+$('#projects').append('<%= j render @project %>')
 
-$('#new_project').on('ajax:success', function() {
-    let input = document.getElementById('new_project')
-    input.reset()
-})
+$('#form_id').html('<%=j render 'create_form', project: Project.new %>')
+
+
+//document.body.addEventListener("ajax:error", (event) => {
+//    const [data, status, xhr] = event.detail;
+//    var errors_project = document.querySelector("#errors_project");
+//    errors_project.insertAdjacentHTML("beforeend", "<%= @project.errors.full_messages.join(', ') %>");
+//});
+
