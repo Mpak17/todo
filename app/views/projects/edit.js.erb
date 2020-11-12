@@ -1,0 +1,8 @@
+document.body.addEventListener("ajax:success", (event) => {
+    const [data, status, xhr] = event.detail;
+//    var project = document.querySelector("#project");
+    $('#project_<%= @project.id %>').html('<%= j render 'update_form', project: @project %>')
+//    project.insertAdjacentHTML("beforebegin", "<%= j render 'update_form', project: @project %>");
+});
+
+

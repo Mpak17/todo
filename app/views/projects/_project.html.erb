@@ -1,0 +1,9 @@
+<div class="project-wrapper">
+  <icon class="project-icon" />
+  <div class="project-name" id="<%="project_#{project.id}" %>"><%= project.name %></div>
+  <div class="project-buttons">
+    <%= link_to "Edit", edit_project_path(project), remote: true %> |
+    <%= link_to "Delete", project, remote: true, method: :delete, data: { confirm: 'Are you sure?' } %>
+  </div>
+
+</div>

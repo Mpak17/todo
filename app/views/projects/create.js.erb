@@ -1,0 +1,11 @@
+$('#projects').append('<%= j render @project %>')
+
+$('#form_id').html('<%=j render 'create_form', project: Project.new %>')
+
+
+//document.body.addEventListener("ajax:error", (event) => {
+//    const [data, status, xhr] = event.detail;
+//    var errors_project = document.querySelector("#errors_project");
+//    errors_project.insertAdjacentHTML("beforeend", "<%= @project.errors.full_messages.join(', ') %>");
+//});
+

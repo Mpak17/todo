@@ -9,3 +9,20 @@ HOME
     <%= link_to "Login", new_user_session_path, class: 'navbar-link'  %>
   <% end %>
 </p>
+
+
+<table>
+  <thead>
+  <% @projects.each do |project| %>
+  <tr>
+    <th><%= project.name %></th>
+    <th>Group</th>
+    <th colspan="3"></th>
+  </tr>
+  <% end %>
+  </thead>
+</table>
+
+<br>
+
+<%= link_to 'New User', new_user_path %>
