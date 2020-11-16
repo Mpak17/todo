@@ -1,9 +1,30 @@
-<div class="project-wrapper">
-  <icon class="project-icon" />
-  <div class="project-name" id="<%="project_#{project.id}" %>"><%= project.name %></div>
-  <div class="project-buttons">
-    <%= link_to "Edit", edit_project_path(project), remote: true %> |
-    <%= link_to "Delete", project, remote: true, method: :delete, data: { confirm: 'Are you sure?' } %>
+
+  <div id="project_<%= project.id %>" class="pb-4">
+    <div class="row p-3 mb bg-primary text-white">
+      <div class="col themed-grid-col" ><i class="fa fa-calendar text-white-50" aria-hidden="true"></i></div>
+      <div class="col-10 themed-grid-col js-project-<%= project.id %>"><%= project.name %></div>
+      <div class="col themed-grid-col text-center text-white-50">
+        <%= link_to edit_project_path(project), remote: true do %>
+          <i class="fas fa-edit text-white-50"></i>
+        <% end %>|
+        <%= link_to project, remote: true, method: :delete, data: { confirm: 'Are you sure?' } do %>
+          <i class="fa fa-trash text-white-50"></i>
+        <% end %>
+      </div>
+    </div>
+    <div class="row p-2 mb bg-secondary text-white">
+      <div class="col-12 themed-grid-col">
+        <%= form_with model: Task.new, remote: true do |form| %>
+          <%= form.hidden_field :project_id, value: project.id %>
+          <%= form.text_field :name, class:'js-task-name' %>
+          <%= form.submit 'Add task', class:'btn btn-success' %>
+        <% end %>
+      </div>
+    </div>
+    <div id="tasks_<%="project_#{project.id}" %>" class="shadow-lg rounded">
+      <% project.tasks.each do |task| %>
+        <%= render('tasks/task', task: task) %>
+      <% end %>
+    </div>
   </div>
 
-</div>

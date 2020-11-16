@@ -1,0 +1,19 @@
+<div id="<%="task_#{task.id}" %>" class="rounded-bottom">
+  <div class="row p-3 bg-light border-top">
+      <div class="col themed-grid-col border-right checkbox">
+          <%= render('tasks/checkbox', task: task) %>
+      </div>
+
+      <div class="col-10 themed-grid-col border-right js-task-<%= task.id %>">
+          <%= render('tasks/strike', task: task) %>
+      </div>
+    <div class="col themed-grid-col text-center text-black-50">
+      <%= link_to edit_task_path(task), remote: true do %>
+        <i class="fas fa-edit text-black-50"></i>
+      <% end %>|
+      <%= link_to task, remote: true, method: :delete, data: { confirm: 'Are you sure?' } do %>
+        <i class="fa fa-trash text-black-50"></i>
+      <% end %>
+    </div>
+  </div>
+</div>

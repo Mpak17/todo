@@ -1,9 +1,8 @@
 class ProjectsController < ApplicationController
-  before_action :find_project, only: [:destroy, :update, :edit, :show]
+  before_action :find_project, only: %i[destroy update edit show]
 
   def index
     @projects = Project.all # TODO: ADD USER SCOPE
-    # @project = Project.new
   end
 
   def create
@@ -13,13 +12,12 @@ class ProjectsController < ApplicationController
       if @project.save
         format.js
       else
-        format.js { render status: 422}
+        format.js { render status: 422 }
       end
     end
   end
 
-  def show
-  end
+  def show; end
 
   def edit
     respond_to do |format|
@@ -38,7 +36,6 @@ class ProjectsController < ApplicationController
   end
 
   def destroy
-    @project_id = @project.id
     @project.destroy
 
     respond_to do |format|

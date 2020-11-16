@@ -1,6 +1,5 @@
 <%= form_with model: Project.new, remote: true do |form| %>
   <div id="errors_project"></div>
-  <%= form.label :name %><br>
   <%= form.text_field :name %>
-  <%= form.submit %>
+  <%= form.submit 'ADD PROJECT' %>
 <% end %>
