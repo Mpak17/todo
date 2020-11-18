@@ -1,0 +1,4 @@
+<%= form_with model: task, class:'form-inline' do |form| %>
+  <%= form.text_field :name, class:'col-md-10' %>
+  <%= form.submit 'Save Task', class:'btn btn-success col-md-2 btn-sm' %>
+<% end %>

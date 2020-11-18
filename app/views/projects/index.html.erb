@@ -1,33 +1,22 @@
-<!--<div>-->
-<!--  <h1>Project list</h1>-->
-<!--  <hr>-->
-<!--</div>-->
-  <div class="container text-center">
-    <p>
-      <% if user_signed_in? %>
-        Logged in as <strong><%= current_user.email %></strong>.
-        <%= link_to "Logout", destroy_user_session_path, method: :delete, class: 'navbar-link'  %>
-      <% else %>
-        <%= link_to "Sign up", new_user_registration_path, class: 'navbar-link'  %> |
-        <%= link_to "Login", new_user_session_path, class: 'navbar-link'  %>
-      <% end %>
-    </p>
+<div class="container p-2 text-center">
+  <% if user_signed_in? %>
+    Logged in as <strong><%= current_user.email %></strong>.
+    <%= link_to "Logout", destroy_user_session_path, method: :delete, class: 'navbar-link'  %>
+  <% else %>
+    <%= link_to "Sign up", new_user_registration_path, class: 'navbar-link'  %> |
+    <%= link_to "Login", new_user_session_path, class: 'navbar-link'  %>
+  <% end %>
+</div>
+<div class="container" id="projects">
+        <%#= render @projects %>
+        <% @projects.each do |project| %>
+        <%= render('projects/project', project: project) %>
+        <% end %>
+</div>
 
-    <div class="wrapper" id="projects">
-      <%= render @projects %>
-    </div>
-
-    <br>
-
-    <div id='form_id' class="invisible"><p><%= render 'create_form', project: Project.new %></p></div>
-
-    <br>
-    <button type="button" class="btn btn-primary">Add TODO List</button>
-
-    <a class="btn btn-primary">
-      <i class="fas fa-trash"></i></a>
-  <!--  <script type="text/javascript">-->
-  <!--  </script>-->
-  </div>
+<div class="container text-center">
+  <div id='form_id' class="invisible project_name"><p><%= render 'create_form', project: Project.new %></p></div>
+  <div id="add_project"><button type="button" class="btn btn-primary">Add TODO List</button></div>
 </div>
 <%= javascript_pack_tag 'projects' %>
+

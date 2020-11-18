@@ -1,0 +1,3 @@
+//$('#tasks_project_<%= @task.project_id %>').append('<%= j render('tasks/task', task: @task) %>')
+$('#project_<%= @task.project_id %> .shadow-lg').append('<%= j render('tasks/task', task: @task) %>')
+$('#project_<%= @task.project_id %> .js-task-name').val('');

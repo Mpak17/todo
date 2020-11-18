@@ -1,4 +1,2 @@
-console.log('Update.js.erb')
-var qwe = '<%=j render @project %>'
-$('#project_<%= @project.id %>').html(qwe)
+$('#project_<%= @project.id %> .js-project-<%= @project.id %>').html('<b><%=j @project.name %></b>')
 
