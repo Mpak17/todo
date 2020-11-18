@@ -1,0 +1,5 @@
+<%= form_with model: Project.new, class:'form-inline', remote: true do |form| %>
+  <div id="errors_project"></div>
+  <%= form.text_field :name, class:'col-lg-9', placeholder:'Please enter the name of your PROJECT' %>
+  <%= form.submit 'ADD PROJECT', class:'btn btn-success col-3 btn-sm' %>
+<% end %>

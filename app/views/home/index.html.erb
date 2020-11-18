@@ -1,0 +1,28 @@
+HOME
+
+<p>
+  <% if user_signed_in? %>
+    Logged in as <strong><%= current_user.email %></strong>.
+    <%= link_to "Logout", destroy_user_session_path, method: :delete, class: 'navbar-link'  %>
+  <% else %>
+    <%= link_to "Sign up", new_user_registration_path, class: 'navbar-link'  %> |
+    <%= link_to "Login", new_user_session_path, class: 'navbar-link'  %>
+  <% end %>
+</p>
+
+
+<table>
+  <thead>
+  <% @projects.each do |project| %>
+  <tr>
+    <th><%= project.name %></th>
+    <th>Group</th>
+    <th colspan="3"></th>
+  </tr>
+  <% end %>
+  </thead>
+</table>
+
+<br>
+
+<%= link_to 'New User', new_user_path %>

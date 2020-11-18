@@ -1,0 +1,4 @@
+document.body.addEventListener("ajax:success", (event) => {
+    const [data, status, xhr] = event.detail;
+    $('#task_<%= @task.id %> .js-task-<%= @task.id %>').html('<%= j render 'update_form', task: @task %>')
+});
