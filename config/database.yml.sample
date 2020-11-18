@@ -3,10 +3,10 @@ default: &default
   encoding: unicode
   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
   timeout: 5000
-  username: 'dev'
-  password: 'dev'
-  host: 'localhost'
-  port: 5432
+  username: <%= ENV.fetch("DATABASE_USERNAME") { 'username' } %>
+  password: <%= ENV.fetch("DATABASE_PASSWORD") { 'password' } %>
+  host: <%= ENV.fetch("DATABASE_HOST") { 'localhost' } %>
+  port: <%= ENV.fetch("DATABASE_PORT") { 5432 } %>
 
 development:
   <<: *default
@@ -15,4 +15,8 @@ development:
 test:
   <<: *default
   database: Todo_test
+
+production:
+  <<: *default
+  database: Todo_production
 
