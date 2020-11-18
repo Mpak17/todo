@@ -9,9 +9,6 @@ $(document).on('ready turbolinks:load', function() {
 
     button.addEventListener('click', buttonHandler)
 
-    var addDatatime = document.querySelector('#add_datatime')
-    var form_id = document.querySelector('#form_id')
-
     function buttonHandler () {
         form_id.classList.remove('invisible')
     }
