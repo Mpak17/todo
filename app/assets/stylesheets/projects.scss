@@ -1,36 +1,13 @@
 // Place all the styles related to the projects controller here.
 // They will automatically be included in application.scss.
 // You can use Sass (SCSS) here: https://sass-lang.com/
-
-.wrapper {
-  width: 80%;
-  top: 20%;
-  border: 2px dashed black;
+.checkbox  {
+  cursor: pointer;
 }
 
-.project-wrapper {
-  width: 100%;
-  display: flex;
-  border: 1px solid blue;
-}
-
-.project-icon {
-  width: 25px;
-  height: 100%;
-  display: block;
-  border: 1px solid green;
-  float: left;
-}
-
-.project-name {
-  width: 80%;
-  border: 1px solid yellow;
-  float: left;
-  display: block;
-}
-
-.project-buttons {
-  border: 1px solid green;
-  float: left;
-  display: block;
+.drag-drop  {
+  cursor: grab;
+  &:active {
+    cursor: grabbing;
+  }
 }

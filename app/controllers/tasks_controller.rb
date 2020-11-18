@@ -1,5 +1,5 @@
 class TasksController < ApplicationController
-  before_action :find_task, only: [:destroy, :show, :edit]
+  before_action :find_task, only: [:destroy, :show, :edit, :update, :move]
 
   def index
     @tasks = Task.all
@@ -26,8 +26,6 @@ class TasksController < ApplicationController
   end
 
   def update
-    @task = Task.find(params[:id])
-
     respond_to do |format|
       if @task.update(task_params)
         format.js
@@ -46,6 +44,11 @@ class TasksController < ApplicationController
     end
   end
 
+  def move
+    @task.insert_at(params[:position].to_i)
+    head :ok
+  end
+
   private
 
   def find_task
@@ -53,6 +56,10 @@ class TasksController < ApplicationController
   end
 
   def task_params
-    params.require(:task).permit(:name, :project_id, :active)
+    params.require(:task).permit(:name, :project_id, :active, :deadline)
+      # .tap do |whitelisted|
+
+      # whitelisted[:active] = ActiveModel::Type::Boolean.new.cast(params.dig(:task, :active)) if
+      #     params.dig(:task, :active) != nil
   end
 end

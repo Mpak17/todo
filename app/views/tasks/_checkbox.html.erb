@@ -1,13 +1,16 @@
 <% if task.active == true %>
   <input type="checkbox"
+         class="checkbox"
          data-remote="true"
-         data-url="<%=task_path(task)%>"
+         data-url="<%= task_path(task) %>"
          data-params="task[active=<%= !task.active %>"
          data-method="put">
 <% else %>
   <input type="checkbox"
+         class="checkbox"
          data-remote="true"
-         data-url="<%=task_path(task)%>"
+         data-url="<%= task_path(task) %>"
          data-params="task[active=<%= !task.active %>"
          data-method="put" checked>
 <% end %>
+</br>
