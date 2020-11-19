@@ -7,13 +7,32 @@
       <%= render('tasks/strike', task: task) %>
     </div>
     <div class="col-2 themed-grid-col text-center text-black-50">
-      <button class="btn btn-light"><i class="fa fa-calendar text-black-50"></i></button>|
+      <button class="btn btn-light" data-toggle="modal" data-target="#staticBackdrop_<%= task.id %>"><i class="fa fa-calendar text-black-50"></i></button>|
       <%= link_to edit_task_path(task), remote: true do %>
         <button class="btn btn-light"><i class="fas fa-edit text-black-50"></i></button>
       <% end %>|
       <%= link_to task, remote: true, method: :delete, data: { confirm: 'Are you sure?' } do %>
         <button class="btn btn-light"><i class="fa fa-trash text-black-50"></i></button>
       <% end %>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" id="staticBackdrop_<%= task.id %>" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="staticBackdropLabel_<%= task.id %>">Choose deadline for task</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <%= form_with model: task, class:'form-group' do |form| %>
+          <%= form.datetime_local_field :deadline, class:'col-md-8' %>
+          <%= form.submit 'Save', class:'btn btn-success col-md-2 btn-sm', data: { dismiss:'modal' }  %>
+        <% end %>
+      </div>
     </div>
   </div>
 </div>

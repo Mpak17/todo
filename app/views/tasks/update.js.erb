@@ -1,3 +1,4 @@
 $('#task_<%= @task.id %> .js-task-<%= @task.id %>').html('<%= j render('tasks/strike', task: @task) %>')
 $('#task_<%= @task.id %> .checkbox').html('<%= j render('tasks/checkbox', task: @task.reload) %>')
 
+
