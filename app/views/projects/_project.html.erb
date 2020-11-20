@@ -1,7 +1,7 @@
  <div id="project_<%= project.id %>" class="pb-4">
     <div class="row p-3 mb bg-primary text-white">
       <div class="col-1 themed-grid-col" ><i class="fa fa-calendar text-white-50" aria-hidden="true"></i></div>
-      <div class="col-9 themed-grid-col js-project-<%= project.id %>"><b><%= project.name %></b></div>
+      <div class="col-9 themed-grid-col js-project-<%= project.id %>"><b><h3><%= project.name %></h3></b></div>
       <div class="col-2 themed-grid-col text-center text-white-50">
         <%= link_to edit_project_path(project), remote: true do %>
           <i class="fas fa-edit text-white-50"></i>

@@ -1,5 +1,6 @@
 <% if task.active == true %>
-  <div><%= task.name %></div>
+  <div><h5><%= task.name %></h5></div>
+  <div>Don't forget the deadlines: <%= task.deadline %></div>
 <% else %>
-  <div><strike><%= task.name %></strike></div>
+  <div><strike><h5><%= task.name %></h5></strike></div>
 <% end %>
